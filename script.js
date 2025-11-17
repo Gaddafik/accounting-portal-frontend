@@ -42,6 +42,3 @@ function generateQRCode(){
   new QRCode(document.getElementById("qrcode"), { text:qrText, width:200, height:200 });
   alert("QR code generated!");
 }
-
-}
-
