@@ -1,7 +1,4 @@
-// ================= Backend URL =================
-const API_URL = "https://accounting-backend.onrender.com"; // <-- Replace if different
-
-// ================= ADMIN LOGIN =================
+const API_URL = "https://accounting-backend-mpap.onrender.com"; 
 const loginForm = document.getElementById("adminLoginForm");
 
 if (loginForm) {
@@ -13,25 +10,28 @@ if (loginForm) {
     try {
       const res = await fetch(`${API_URL}/api/admin/login`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify({ email, password }),
       });
+
       const data = await res.json();
+
       if (res.ok) {
         localStorage.setItem("adminToken", data.token);
         alert("Login successful!");
-        window.location.href = "dashboard.html";
+        window.location.href = "dashboard.html"; // redirect to dashboard
       } else {
         alert(data.message || "Login failed");
       }
     } catch (err) {
       console.error(err);
-      alert("Error connecting to backend");
+      alert("Error connecting to backend. Make sure your Render backend is live and CORS is enabled.");
     }
   });
 }
 
-// ================= FETCH COURSES =================
 async function fetchCourses() {
   const token = localStorage.getItem("adminToken");
   try {
@@ -45,15 +45,11 @@ async function fetchCourses() {
     }
   } catch (err) {
     console.error(err);
+    alert("Error fetching courses. Make sure backend is live and CORS is configured.");
   }
 }
 
-// Call fetchCourses when on dashboard
-if (window.location.pathname.includes("dashboard.html")) {
-  fetchCourses();
-}
 
-// ================= SUBMIT ATTENDANCE =================
 async function submitAttendance(courseId, studentData) {
   const token = localStorage.getItem("adminToken");
   try {
@@ -65,15 +61,16 @@ async function submitAttendance(courseId, studentData) {
       },
       body: JSON.stringify(studentData),
     });
+
     const data = await res.json();
     alert("Attendance submitted!");
   } catch (err) {
     console.error(err);
-    alert("Error submitting attendance");
+    alert("Error submitting attendance. Check backend.");
   }
 }
 
-// ================= SUBMIT TEST =================
+
 async function submitTest(courseId, testData) {
   const token = localStorage.getItem("adminToken");
   try {
@@ -85,15 +82,20 @@ async function submitTest(courseId, testData) {
       },
       body: JSON.stringify(testData),
     });
+
     const data = await res.json();
     alert("Test submitted!");
   } catch (err) {
     console.error(err);
-    alert("Error submitting test");
+    alert("Error submitting test. Check backend.");
   }
 }
 
-// ================= QR CODE PLACEHOLDER =================
+
 function scanQRCode() {
   alert("QR code scanning feature coming soon!");
+}
+
+if (window.location.pathname.includes("dashboard.html")) {
+  fetchCourses();
 }
