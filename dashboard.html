@@ -4,50 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Accounting Portal - Dashboard</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Accounting Department Dashboard</h1>
-  </header>
+<header>
+  <h1>Accounting Department Dashboard</h1>
+</header>
+<main>
+  <section class="card">
+    <h2>Courses Overview</h2>
+    <table id="coursesTable">
+      <thead>
+        <tr>
+          <th>Course ID</th>
+          <th>Course Name</th>
+          <th>Total Students</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
 
-  <main>
-    <!-- Courses Table -->
-    <section class="card">
-      <h2>Courses Overview</h2>
-      <table id="coursesTable">
-        <thead>
-          <tr>
-            <th>Course ID</th>
-            <th>Course Name</th>
-            <th>Total Students</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </section>
-
-    
-    <section class="card">
-      <h2>Generate QR Code</h2>
-      <div id="qrcode"></div>
-      <button class="btn" onclick="generateQRCode()">Generate QR Code</button>
-    </section>
-
-    
-    <section class="card">
-      <h2>Student Submission</h2>
-      <form id="studentForm">
-        <input type="text" id="studentName" placeholder="Student Name" required>
-        <input type="text" id="studentMatric" placeholder="Matric Number" required>
-        <input type="number" id="studentScore" placeholder="Test Score (optional)">
-        <input type="text" id="studentCourseId" placeholder="Course ID" required>
-        <button type="submit" class="btn">Submit</button>
-      </form>
-    </section>
-  </main>
-
-</body>
+  <section class="card">
+    <h2>Generate QR Code</h2>
+    <div id="qrcode"></div>
+    <button class="btn" onclick="generateQRCode()">Generate QR Code</button>
+  </section>
+</main>
 <script src="script.js"></script>
+</body>
 </html>
