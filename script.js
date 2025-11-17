@@ -37,8 +37,9 @@ if(window.location.pathname.includes("dashboard.html")) fetchCourses();
 function generateQRCode(){
   const courseId=prompt("Enter Course ID:");
   if(!courseId) return;
-  const qrText=`https://<your-netlify-frontend>/student.html?courseId=${courseId}`;
+  const qrText=`https://portalsample.netlify.app/student.html?courseId=${courseId}`;
   document.getElementById("qrcode").innerHTML="";
   new QRCode(document.getElementById("qrcode"), { text:qrText, width:200, height:200 });
   alert("QR code generated!");
 }
+
