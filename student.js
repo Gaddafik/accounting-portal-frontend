@@ -1,4 +1,4 @@
-const API_URL = "https://<your-render-backend>.onrender.com";
+const API_URL = "https://accounting-backend-mpap.onrender.com";
 const urlParams = new URLSearchParams(window.location.search);
 const courseId = urlParams.get('courseId');
 document.getElementById("studentCourseId").value = courseId;
